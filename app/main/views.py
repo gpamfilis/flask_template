@@ -5,4 +5,4 @@ from . import main
 @main.route('/')
 def home():
     """Render website's home page."""
-    return 'hey motherfucker' #render_template('about.html')
+    return render_template('main/index.html')
