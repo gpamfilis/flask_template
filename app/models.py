@@ -11,6 +11,8 @@ from flask import current_app
 #     return User.query.get(int(user_id))
 
 
+
+
 class User(UserMixin, db.Model):
     __tablename__ = "user"
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
@@ -44,8 +46,8 @@ class User(UserMixin, db.Model):
             return None  # invalid token
         user = User.query.get(data['id'])
         return user
-      
-      
-@db.event.listens_for(User, "after_insert")
-def insert_order_to_printer(mapper, connection, target):
-    print('New User')
+
+
+# @db.event.listens_for(User, "after_insert")
+# def insert_order_to_printer(mapper, connection, target):
+#     print('New User', target.username)

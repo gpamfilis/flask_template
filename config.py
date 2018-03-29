@@ -19,7 +19,7 @@ class Config:
 class DevelopmentConfig(Config):
     INTERNAL_URL = '127.0.0.1:5000'
     DEBUG = True
-    # SERVER_NAME = '0.0.0.0:5000'
+    # SERVER_NAME = 'localhost'
     FEATURE_FLAGS = {
         'firebase': False,
         'manage': True,
@@ -33,8 +33,8 @@ class DevelopmentConfig(Config):
     MAIL_USE_TLS = True
     MAIL_USERNAME = 'username'  # os.environ.get('MAIL_USERNAME')
     MAIL_PASSWORD = 'password'  # os.environ.get('MAIL_PASSWORD')
-    # SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'test.db')
-    SQLALCHEMY_DATABASE_URI = 'mysql://root:pass@localhost/dbname'
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'test.db')
+    # SQLALCHEMY_DATABASE_URI = 'mysql://root:pass@localhost/dbname'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 
@@ -52,7 +52,7 @@ class ProductionConfig(Config):
 
 
 class PythonAnywhereConfig(Config):
-    INTERNAL_URL = 'www.e-orders.org'
+    INTERNAL_URL = 'www.example.com'
 
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
