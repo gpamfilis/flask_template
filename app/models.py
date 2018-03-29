@@ -44,3 +44,8 @@ class User(UserMixin, db.Model):
             return None  # invalid token
         user = User.query.get(data['id'])
         return user
+      
+      
+@db.event.listens_for(User, "after_insert")
+def insert_order_to_printer(mapper, connection, target):
+    print('New User')
