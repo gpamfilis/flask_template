@@ -6,9 +6,15 @@ from itsdangerous import (TimedJSONWebSignatureSerializer
                           as Serializer, BadSignature, SignatureExpired)
 
 from flask import current_app
+from . import login_manager
 # @login_manager.user_loader
 # def load_user(user_id):
 #     return User.query.get(int(user_id))
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
+
 
 
 

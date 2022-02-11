@@ -5,11 +5,13 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 class Config:
     def __init__(self):
         pass
-
+    UPLOAD_EXTENSIONS = ['.txt','.csv', '.xls', '.xlsx']
+    UPLOAD_PATH='uploads'
     SECRET_KEY = 'cheesecake'
     # JWT_SECRET_KEY = os.environ.get('JWT_SECRET_KEY') or 'cheese cake'
     # JWT_ALGORITHM = 'SH256'
     SQLALCHEMY_COMMIT_ON_TEARDOWN = True
+    KONCH_IPY_AUTORELOAD = True
 
     @staticmethod
     def init_app(app):
@@ -37,7 +39,6 @@ class DevelopmentConfig(Config):
     # SQLALCHEMY_DATABASE_URI = 'mysql://root:pass@localhost/dbname'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
-
 class TestingConfig(Config):
     DEBUG = True
     SQLALCHEMY_TRACK_MODIFICATIONS = False
@@ -47,8 +48,8 @@ class TestingConfig(Config):
     APP_SLOW_DB_QUERY_TIME = 1
 
 
-class ProductionConfig(Config):
-    SQLALCHEMY_DATABASE_URI = ''
+# class ProductionConfig(Config):
+#     SQLALCHEMY_DATABASE_URI = ''
 
 
 class PythonAnywhereConfig(Config):
@@ -68,38 +69,40 @@ class PythonAnywhereConfig(Config):
     MAIL_USE_TLS = True
     MAIL_USERNAME = 'username'  # os.environ.get('MAIL_USERNAME')
     MAIL_PASSWORD = 'password'  # os.environ.get('MAIL_PASSWORD')
-    SQLALCHEMY_DATABASE_URI = ''
+    SQLALCHEMY_DATABASE_URI = 'mysql://gpamfilis:mysqliscool123@gpamfilis.mysql.pythonanywhere-services.com/gpamfilis$APP_NAMEerhelper_development'
 
 
-class DigitalOceanConfig(Config):
-    INTERNAL_URL = ''
 
-    SQLALCHEMY_TRACK_MODIFICATIONS = False
-    FEATURE_FLAGS = {
-        'firebase': True,
-        'manage': True,
-        'inventory': False,
-        'reports': True,
-        'finance': False
-    }
-    MAIL_SERVER = 'smtp.googlemail.com'
-    MAIL_PORT = 587
-    MAIL_USE_TLS = True
-    MAIL_USERNAME = 'username'  # os.environ.get('MAIL_USERNAME')
-    MAIL_PASSWORD = 'password'  # os.environ.get('MAIL_PASSWORD')
-    SQLALCHEMY_DATABASE_URI = 'mysql://root:pass@localhost/dbname'
-    SQLALCHEMY_TRACK_MODIFICATIONS = False
+# class DigitalOceanConfig(Config):
+#     INTERNAL_URL = ''
+
+#     SQLALCHEMY_TRACK_MODIFICATIONS = False
+#     FEATURE_FLAGS = {
+#         'firebase': True,
+#         'manage': True,
+#         'inventory': False,
+#         'reports': True,
+#         'finance': False
+#     }
+#     MAIL_SERVER = 'smtp.googlemail.com'
+#     MAIL_PORT = 587
+#     MAIL_USE_TLS = True
+#     MAIL_USERNAME = 'username'  # os.environ.get('MAIL_USERNAME')
+#     MAIL_PASSWORD = 'password'  # os.environ.get('MAIL_PASSWORD')
+#     SQLALCHEMY_DATABASE_URI = 'mysql://root:pass@localhost/dbname'
+#     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 
-# Todo 31/8/2017 - herokuconfig
+# # Todo 31/8/2017 - herokuconfig
 
 
 
 config = {
             'development': DevelopmentConfig,
-            'testing': TestingConfig,
-            'production': ProductionConfig,
-            'default': DevelopmentConfig,
+            # 'testing': TestingConfig,
+            # 'production': ProductionConfig,
+            # 'default': DevelopmentConfig,
             "pythonanywhere": PythonAnywhereConfig,
-            "digitalocean": DigitalOceanConfig
+            # "digitalocean": DigitalOceanConfig
         }
+
